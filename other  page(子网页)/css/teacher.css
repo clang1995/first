@@ -1,0 +1,13 @@
+#wrapper {margin:auto;width: 960px;}
+#head {margin:10px;margin-bottom:0px;height:250px;}
+#content{margin:0 10px;height:1000px;}
+h1{font-family:"华文彩云";font-size:60px;font-style:normal;}
+*{ margin:0; padding:0; list-style:none;}
+img{ border:0;}
+.teacher{width:1000px;height:360px;position:relative;margin:0 auto; overflow:hidden;}
+.teacher .teacherPic{width:1000px;height:360px;}
+.teacher .teacherPic .content{width:180px;height:360px;float:left;position:relative;overflow:hidden;margin-left:3px;}
+.teacher .teacherPic .content .txt{width:156px;height:100px;background:rgba(18,21,44,0.7); position:absolute;left:0px;bottom:0px;padding:0 12px;border-top:2px solid #CB5412;}
+.teacher .teacherPic .content .txt h3{color:#CB5412;font-size:24px;font-weight:100;margin:10px 0 6px 0;}
+.teacher .teacherPic h4{color:#fff;font-size:14px;font-weight:100;}
+.teacher .teacherPic .content .txt p{color:#fff;margin-top:20px;padding-top:12px;border-top:1px solid #CB5412;}

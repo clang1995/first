@@ -1,0 +1,351 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>我想学习Wxxx</title>
+<link href="css/home.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript">
+function MM_popupMsg(msg){//v1.0
+alert(msg);
+}
+</script>
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<SCRIPT type=text/javascript>
+function $(id) { return document.getElementById(id); }
+function addLoadEvent(func){
+ var oldonload = window.onload;
+ if (typeof window.onload != 'function') {
+  window.onload = func;
+ } else {
+  window.onload = function(){
+   oldonload();
+   func();
+  }
+ }
+}
+function moveElement(elementID,final_x,final_y,interval) {
+  if (!document.getElementById) return false;
+  if (!document.getElementById(elementID)) return false;
+  var elem = document.getElementById(elementID);
+  if (elem.movement) {
+    clearTimeout(elem.movement);
+  }
+  if (!elem.style.left) {
+    elem.style.left = "0px";
+  }
+  if (!elem.style.top) {
+    elem.style.top = "0px";
+  }
+  var xpos = parseInt(elem.style.left);
+  var ypos = parseInt(elem.style.top);
+  if (xpos == final_x && ypos == final_y) {
+  return true;
+  }
+  if (xpos < final_x) {
+    var dist = Math.ceil((final_x - xpos)/10);
+    xpos = xpos + dist;
+  }
+  if (xpos > final_x) {
+    var dist = Math.ceil((xpos - final_x)/10);
+    xpos = xpos - dist;
+  }
+  if (ypos < final_y) {
+    var dist = Math.ceil((final_y - ypos)/10);
+    ypos = ypos + dist;
+  }
+  if (ypos > final_y) {
+    var dist = Math.ceil((ypos - final_y)/10);
+    ypos = ypos - dist;
+  }
+  elem.style.left = xpos + "px";
+  elem.style.top = ypos + "px";
+  var repeat = "moveElement('"+elementID+"',"+final_x+","+final_y+","+interval+")";
+  elem.movement = setTimeout(repeat,interval);
+}
+function classNormal(iFocusBtnID,iFocusTxID){
+ var iFocusBtns= $(iFocusBtnID).getElementsByTagName('li');
+ var iFocusTxs = $(iFocusTxID).getElementsByTagName('li');
+ for(var i=0; i<iFocusBtns.length; i++) {
+  iFocusBtns[i].className='normal';
+  iFocusTxs[i].className='normal';
+ }
+}
+function classCurrent(iFocusBtnID,iFocusTxID,n){
+ var iFocusBtns= $(iFocusBtnID).getElementsByTagName('li');
+ var iFocusTxs = $(iFocusTxID).getElementsByTagName('li');
+ iFocusBtns[n].className='current';
+ iFocusTxs[n].className='current';
+}
+function iFocusChange() {
+ if(!$('ifocus')) return false;
+ $('ifocus').onmouseover = function(){atuokey = true};
+ $('ifocus').onmouseout = function(){atuokey = false};
+ var iFocusBtns = $('ifocus_btn').getElementsByTagName('li');
+ var listLength = iFocusBtns.length;
+ iFocusBtns[0].onmouseover = function() {
+  moveElement('ifocus_piclist',0,0,5);
+  classNormal('ifocus_btn','ifocus_tx');
+  classCurrent('ifocus_btn','ifocus_tx',0);
+ }
+ if (listLength>=2) {
+  iFocusBtns[1].onmouseover = function() {
+   moveElement('ifocus_piclist',0,-225,5);
+   classNormal('ifocus_btn','ifocus_tx');
+   classCurrent('ifocus_btn','ifocus_tx',1);
+  }
+ }
+ if (listLength>=3) {
+  iFocusBtns[2].onmouseover = function() {
+   moveElement('ifocus_piclist',0,-450,5);
+   classNormal('ifocus_btn','ifocus_tx');
+   classCurrent('ifocus_btn','ifocus_tx',2);
+  }
+ }
+ if (listLength>=4) {
+  iFocusBtns[3].onmouseover = function() {
+   moveElement('ifocus_piclist',0,-675,5);
+   classNormal('ifocus_btn','ifocus_tx');
+   classCurrent('ifocus_btn','ifocus_tx',3);
+  }
+ }
+}
+setInterval('autoiFocus()',5000);
+var atuokey = false;
+function autoiFocus() {
+ if(!$('ifocus')) return false;
+ if(atuokey) return false;
+ var focusBtnList = $('ifocus_btn').getElementsByTagName('li');
+ var listLength = focusBtnList.length;
+ for(var i=0; i<listLength; i++) {
+  if (focusBtnList[i].className == 'current') var currentNum = i;
+ }
+ if (currentNum==0&&listLength!=1 ){
+  moveElement('ifocus_piclist',0,-225,5);
+  classNormal('ifocus_btn','ifocus_tx');
+  classCurrent('ifocus_btn','ifocus_tx',1);
+ }
+ if (currentNum==1&&listLength!=2 ){
+  moveElement('ifocus_piclist',0,-450,5);
+  classNormal('ifocus_btn','ifocus_tx');
+  classCurrent('ifocus_btn','ifocus_tx',2);
+ }
+ if (currentNum==2&&listLength!=3 ){
+  moveElement('ifocus_piclist',0,-675,5);
+  classNormal('ifocus_btn','ifocus_tx');
+  classCurrent('ifocus_btn','ifocus_tx',3);
+ }
+ if (currentNum==3 ){
+  moveElement('ifocus_piclist',0,0,5);
+  classNormal('ifocus_btn','ifocus_tx');
+  classCurrent('ifocus_btn','ifocus_tx',0);
+ }
+ if (currentNum==1&&listLength==2 ){
+  moveElement('ifocus_piclist',0,0,5);
+  classNormal('ifocus_btn','ifocus_tx');
+  classCurrent('ifocus_btn','ifocus_tx',0);
+ }
+ if (currentNum==2&&listLength==3 ){
+  moveElement('ifocus_piclist',0,0,5);
+  classNormal('ifocus_btn','ifocus_tx');
+  classCurrent('ifocus_btn','ifocus_tx',0);
+ }
+}
+addLoadEvent(iFocusChange);
+</SCRIPT>
+
+</head>
+<body onload="MM_popupMsg('欢迎您欣赏杨诗朗的第一个网站——我想学习Wxxx        （一个各种计算机语言专业学习的网站！）')">
+<div id="wrapper">
+  <div id="head" >
+  <img src="images/主图.gif" width="940" height="250" /> 
+  </div>
+  <div id="a1">
+  <ul>
+    <li><a href="Home.html">首页</a></li>
+    <li><a href="#">热门资讯</a></li>
+    <li><a href="other  page(子网页)/course.html">课程中心</a></li>
+    <li><a href="#">学习社区</a></li>
+    <li><a href="other  page(子网页)/resources.html">共享资源</a></li>
+    <li><a href="other  page(子网页)/teacher.html">导师实力</a></li>
+    <li><a href="#">在线留言</a></li>
+  </ul>
+  </div>
+  <div id="main">
+     <div id="left">
+          <div id="left1">
+            <p><img src="images/u=3183587539,2653301993&amp;fm=21&amp;gp=0.png" width="121" height="86" /></p>
+            <p>&nbsp; </p>
+            <form action="" method="post" id="member" >
+            <h3>会员登录</h3>
+            <p>&nbsp;</p>
+              <h5>账户：
+                <input type="text"
+                size="18" />
+              </h5>
+              <br/> 
+              <h5>
+                密码：
+                   <input name="" type="password" size="18" />
+              </h5>
+              <p>&nbsp;</p>     
+              <p>
+               <input name="登录" type="submit" 
+                style="height:30px;
+                width:100px;
+                background-color:#F33;
+                font-size:14px;
+                font-weight:bold
+                value=" value="登录" />  
+              </p>
+            </form>
+       </div>
+          <div id="left2">
+                  <h3>我想学习Wxxx </h3>
+                  <h3>客户端下载</h3>
+                  <p><br/>
+                    <img src="images/Image 1_副本.png" width="103" height="40" align="middle" /></p>
+                  <p>&nbsp;</p>
+                  <p><img src="images/Image 111_副本.png"  width="103" height="40" align="middle" /></p>
+          </div>
+      </div>
+    <div id="content">
+           <div id="ifocus">
+           <div id="ifocus_pic">
+           <div id="ifocus_piclist" style="left: 1px; top: -671px;">
+           <ul>
+           <li><a href="#"><img src="images/16152144F-0-lp.jpg" width="600" height="360" /></a></li>
+           <li><a href="#"><img src="images/093ZM048-0-lp.jpg" width="600" height="337" /></a></li>
+           <li><a href="#"><img src="images/2042043Y4-0-lp.png" width="600" height="430" /></a></li>
+           <li><a href="#"><img src="images/22550W5b-0-lp.png" width="600" height="356" /></a></li>
+           </ul>
+           </div>
+           <div id="ifocus_opdiv"></div>
+           <div id="ifocus_tx">
+           <ul>
+           <li class="current">
+           <h1>二维码的生成细节和原理</h1>
+           </li>
+           <li class="normal">
+           <h1>知名网站的技术实现</h1>
+           </li>
+           <li class="normal">
+           <h1>Java程序员应该知道的十个调试技巧</h1>
+           </li>
+           <li class="normal">
+           <h1>影响Java EE性能的十大问题</h1>
+           </li>
+           </ul>
+         </div>
+    </div>
+         <div id="ifocus_btn">
+         <ul>
+         <li class="current"><img src="images/16152144F-0-lp.jpg" width="600" height="360" /></li>
+         <li class="normal"><img src="images/093ZM048-0-lp.jpg" width="600" height="337" /></li>
+         <li class="normal"><img src="images/2042043Y4-0-lp.png" width="600" height="430" /></li>
+         <li class="normal"><img src="images/22550W5b-0-lp.png" width="600" height="356" /></li>
+         </ul>
+         </div>
+    </div>
+           <div id="content2">
+             <h2>☎编程经验 </h2>
+             <ul>
+             <li> <a href="#">「移动开发」如何为你的App获取用户的反馈和5星</a></li>
+             
+             <li><a href="#">「数据库技术」MongoDB之备份与恢复</a></li>
+             <img src="images/卧薪尝胆.jpg" width="137" height="120" align="left" />
+             <li><a href="#">「移动开发」从零开始学iOS开发的15条建议</a></li>
+              
+             <li><a href="#">「黑客技术」PXN防护技术的研究与绕过</a></li>
+             <li><a href="#">「游戏开发」手游服务器之数据IO进化</a></li>
+            
+             <li><a href="#">「Web开发」RESTful API设计实践</a></li>
+             </ul>
+          </div>
+     </div>
+        <div id="right">
+        <img src="images/悬梁刺股.jpg" width="180" height="180" />  
+<h1>☎最新资讯<a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;更多>></a> </h1>
+         <ul> 
+                 <li><a href="#">★Espresso实战：快速的Android UI自动化测试</a></li>
+                 <li><a href="#">★18个你可能不相信是用CSS制作出来的东西</a></li>
+                 <li><a href="#">★Axure RP 8 Beta版正式上线</a></li>
+                 <li><a href="#">★财务管理精品课程网站改版</a></li>
+                 <li><a href="#">★浅谈JS中多并发的一些处理方法</a></li>
+                 <li><a href="#">★苹果官方博客：从SDK详说Swift代码的改变</a></li>
+                 
+        </ul>       
+        </div>
+  </div>
+        <div class="shequ">
+    	
+    	<h4>&nbsp;</h4>
+    	<h4>社区大本营</h4>
+        <h4>&nbsp;</h4>
+        <div>
+        	<a href="#"><img src="images/t0113d2c46b52666666.png" width="50" height="50" />
+            <span>Android</span>
+            </a>
+            <a href="#"><img src="images/t01ffcca1cf68ffb428.png" width="50" height="50" />
+            <span>Ruby</span>
+            </a>
+            <a href="#"><img src="images/t016204188721a285a6.jpg" width="50" height="50" />
+            <span>Linux</span>
+            </a>
+            <a href="#"><img src="images/t01f819581c487a4946.jpg" width="50" height="50" />
+            <span>Python</span>
+            </a>
+            <a href="#"><img src="images/t01c775e19efbcb8774.jpg" width="50" height="50" />
+            <span>HTML5</span>
+            </a>
+        </div>
+        <span class="more"><a href="#">+更多社区+</a></span>
+</div>
+      <div class="Popular-courses">
+    	<h4>&nbsp;</h4>
+    	<h4>&nbsp;</h4>
+    	<h4>热门课程推荐</h4>
+        <h5>Popular courses</h5>
+        <div>
+        	<a href="#"><img src="images/bj_1_01_9coq.png" width="120" height="120" />
+            <span>数据库</span>
+            </a>
+            <a href="#"><img src="images/bj_1_02_qze7.png" width="120" height="120" />
+            <span>网页设计</span>
+            </a>
+            <a href="#"><img src="images/bj_1_03_emta.png" width="120" height="120" />
+            <span>PHP</span>
+            </a>
+            <a href="#"><img src="images/bj_1_04_mdn0.png" width="120" height="120" />
+            <span>数据结构</span>
+            </a>
+            <a href="#"><img src="images/bj_1_05_9eg1.png" width="120" height="120" />
+            <span>FLASH</span>
+            </a>
+        </div>
+        <span class="more-2"><a href="other  page(子网页)/course.html">+更多课程+</a></span>   
+  </div>
+     
+        <div id="s1">
+        <div class="s2">
+        <div><span class="span-1">师资雄厚</span><span class="span-2">100%认证</span></div>
+        <h6>I Want You</h6>
+        <p>&nbsp;</p>
+        <h7>来吧，我想学习的你们</h7>
+        <div class="s2-Content">我们的导师来自于计算机领域的顶尖精英，保障每一个学员的切身利益，我们与学员签订合同，如果学不会可以免费重学，对学习不满意可以无条件退款。真正做到无风险学习，我们的愿景是让每一位学员都满意，让每一位学员都学到真知识！</div>
+        <span class="span-3"><a href="other  page(子网页)/teacher.html">+了解我们+</a></span>
+        </div>
+  </div>
+   <div class="footer1"><div class="footer" align="center">
+	<a href="Home.html"> 首页</a> <a href="#">关于我们</a> <a href="#">课程中心</a> <a href="#">论坛中心</a> <a href="#">联系我们</a><br />
+	<div>
+		作者：杨诗朗&nbsp;&nbsp; 学号:2014333502036&nbsp;&nbsp; Email:1462354728@qq.com
+	</div>
+	<div>
+		必属精品
+	</div>
+</div></div><div align='center' style='padding:5px'>created by <strong>杨诗朗</strong></a></div>
+
+</div>
+</body>
+</html>
+

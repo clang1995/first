@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>导师实力</title>
+<link href="css/teacher.css" type="text/css" rel="stylesheet" />
+</head>
+
+<body>
+<div id="wrapper">
+<div id="head">
+<img src="image1/主图.gif" width="940" height="250" /> 
+</div>
+<div id="content">
+<h1 align="center">&nbsp;</h1>
+<h1 align="center">导师实力</h1>
+<p align="center">&nbsp;</p>
+<p align="center">&nbsp;</p>
+<p align="center">&nbsp;</p>
+<p align="center">&nbsp;</p>
+<p align="center">&nbsp;</p>
+<p align="center">&nbsp;</p>
+  <p align="center">&nbsp;</p>
+<div class="teacher">
+	<div class="teacherPic">
+
+		<div class="content">
+		  <img src="image1/t1.jpg" width="180" height="360" />
+			<div class="txt">
+				<h3>马老师</h3>
+				<h4>中国国家二级工程师<br/>网页设计高级讲师</h4>
+				<p>拥有丰富的教学和实操经验，多年的教书生涯历练了对会计学的精深把握，课程讲授，深入浅出，语言干脆利落，旁征博引，解题思路，逻辑严密，化繁为简，直击要点。</p>
+			</div>
+		</div>
+		<div class="content">
+		  <img src="image1/t2.jpg" width="180" height="360" />
+			<div class="txt">
+				<h3>吴老师</h3>
+				<h4>中国国家特级工程师<br/>数据库大师</h4>
+				<p>金融学博士，金融、财会专业双重思维带你深入浅出的学习CPA《财管》课程，通俗易懂的授课技巧，便捷、高效的学习方法让你信心百倍的通关CPA！</p>
+			</div>
+		</div>
+		<div class="content">
+		  <img src="image1/t3.jpg" width="180" height="360" />
+			<div class="txt">
+				<h3>刘老师</h3>
+				<h4>中国国家一级工程师<br/>数据结构师</h4>
+				<p>管理学博士，丰富的海外企管经历，理论实践相结合的教学方法，让公司战略与风险管理课程不再抽象，用企业管理思维帮你破解考试之谜！实属京城实力派注册会计师讲师！</p>
+			</div>
+		</div>
+		<div class="content">
+		  <img src="image1/t4.jpg" width="180" height="360" />
+			<div class="txt">
+				<h3>王老师</h3>
+				<h4>中国国家二级工程师</h4>
+				<p>管理学博士，丰富的海外企管经历，理论实践相结合的教学方法，让公司战略与风险管理课程不再抽象，用企业管理思维帮你破解考试之谜！、重难点把握精准，解析细致；</p>
+			</div>
+		</div>
+		<div class="content">
+		  <img src="image1/t5.jpg" width="180" height="360" />
+			<div class="txt">
+				<h3>贾老师</h3>
+				<h4>中国国家工程院院士<br/>Java大师</h4>
+				<p>独创了考点讲解、重点训练、考前串讲的“三轮教学”法，为希望短期攻克经济法课程的学员指明正确的道路；对学生真诚亲切，认真负责；授课风格幽默，擅长互动式教学!</p>
+			</div>
+		</div>
+		
+	</div>
+</div>
+<script src="js/jquery.max.js"></script>
+<script>
+$(function(){
+	$(".content").hover(function(){
+		$(this).children(".txt").stop().animate({height:"360px"},200);
+		$(this).find(".txt h3").stop().animate({paddingTop:"130"},550);
+		$(this).find(".txt p").stop().show();
+	},function(){
+		$(this).children(".txt").stop().animate({height:"100px"},200);
+		$(this).find(".txt h3").stop().animate({paddingTop:"0px"},550);
+		$(this).find(".txt p").stop().hide();
+	})
+})
+</script>  
+</div>
+</div>
+</body>
+</html>
